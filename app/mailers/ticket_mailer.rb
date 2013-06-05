@@ -1,3 +1,8 @@
 class TicketMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "me@billyshih.com"
+
+  def ticket_confirmation(ticket)
+    @ticket = ticket
+    mail(to: "me@billyshih.com", subject: @ticket.subject)
+  end
 end
