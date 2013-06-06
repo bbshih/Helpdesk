@@ -1,6 +1,6 @@
 class IncomingMailsController < ApplicationController
   def create
-    Rails.logger.info params
+    puts params
 
       render :text => 'Success', :status => 200
 
