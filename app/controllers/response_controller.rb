@@ -11,15 +11,6 @@ class ResponseController < ApplicationController
     end
   end
 
-  def email_create
-    @response = @ticket.responses.build(response_params)
-    if @response.save
-      render :text => 'success', :status => 200 # a status of 404 would reject the mail
-    else
-      render :text => 'Internal failure', :status => 501
-    end
-  end
-
   private
   def response_params
     params.require(:response).permit(:body)
