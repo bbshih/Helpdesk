@@ -4,7 +4,10 @@ class IncomingMailsController < ApplicationController
   def create
     id = params[:subject][/\d+/].to_i # finds the first number of the subject line
     ticket = Ticket.find(id)
-    ticket.response.create( body: params[:plain])
+
+    ticket.responses.build
+    ticket.responses.create( body: params[:plain])
+    # ticket.responses.create( body: params[:plain])
     render :text => 'success', :status => 200 # a status of 404 would reject the mail
   end
 
