@@ -7,7 +7,7 @@ class IncomingMailsController < ApplicationController
     # Rails.logger.info params[:headers]['Subject']
     raise params.inspect
     
-    id = params[:headers][:subject][/\d+/].to_i # finds the first number of the subject line
+    id = params[:headers][:Subject][/\d+/].to_i # finds the first number of the subject line
 
     Rails.logger.info id
     @ticket = Ticket.find(id)
