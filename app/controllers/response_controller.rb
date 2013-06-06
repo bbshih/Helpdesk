@@ -3,11 +3,20 @@ class ResponseController < ApplicationController
   before_filter :find_response, only: [:show, :edit, :update, :destroy]
   
   def create
-    @response = @ticket.build_apn(response_params)
+    @response = @ticket.responses.build(response_params)
     if @response.save
       redirect_to [@ticket, @response]
     else
       render action: "new"
+    end
+  end
+
+  def email_create
+    @response = @ticket.responses.build(response_params)
+    if @response.save
+      render :text => 'success', :status => 200 # a status of 404 would reject the mail
+    else
+      render :text => 'Internal failure', :status => 501
     end
   end
 

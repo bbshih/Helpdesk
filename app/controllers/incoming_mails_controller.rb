@@ -12,14 +12,14 @@ class IncomingMailsController < ApplicationController
     Rails.logger.info id
     @ticket = Ticket.find(id)
     # ticket.responses.create( :body => params[:plain])    
-    @response = @ticket.responses.build( body: params[:plain] )    
-    # @ticket = ticket.responses.create( body: params[:plain])
+    # @response = @ticket.responses.build( body: params[:plain] )    
+    @ticket.responses.email_create( body: params[:plain])
 
-    if @response.save
-      render :text => 'success', :status => 200 # a status of 404 would reject the mail
-    else
-      render :text => 'Internal failure', :status => 501
-    end    
+    # if @response.save
+    #   render :text => 'success', :status => 200 # a status of 404 would reject the mail
+    # else
+    #   render :text => 'Internal failure', :status => 501
+    # end    
   end
 
 end
