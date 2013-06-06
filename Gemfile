@@ -28,6 +28,10 @@ gem 'jbuilder', '~> 1.0.1'
 
 gem "letter_opener", :group => :development
 
+gem "pry-rails"
+gem "pry-doc"
+gem "pry-debugger"
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
