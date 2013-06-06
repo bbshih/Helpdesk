@@ -10,5 +10,10 @@
   <%= @ticket.body %>
 </p>
 
+<ul>
+  <%= @ticket.response each do |response| %>
+    <li>response.body</li>
+  <% end %>
+</ul>
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
 <%= link_to 'Back', tickets_path %>
