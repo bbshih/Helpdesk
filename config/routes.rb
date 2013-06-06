@@ -3,9 +3,8 @@ Helpdesk::Application.routes.draw do
     resources :responses
   end
 
-  # post '/incoming_mails' => 'incoming_mails#create'
-  resources :incoming_mails
-  
+  post "/incoming_mails" => "incoming_mails#create"
+
   root to: "tickets#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
