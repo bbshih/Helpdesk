@@ -3,6 +3,6 @@ class TicketMailer < ActionMailer::Base
   
   def ticket_confirmation(ticket)
     @ticket = ticket
-    mail(to: "me+ticket@billyshih.com", subject: @ticket.id.to_s + " " + @ticket.subject)
+    mail(to: "me+ticket@billyshih.com", subject: @ticket.subject + " " + @ticket.id.to_s)
   end
 end
