@@ -15,7 +15,7 @@ class IncomingMailsController < ApplicationController
     @ticket = Ticket.find(id)
     # ticket.responses.create( :body => params[:plain])    
     
-    @response = ticket.responses.build( body: params[:plain])    
+    @response = @ticket.responses.build( body: params[:plain])    
     # @ticket = ticket.responses.create( body: params[:plain])
 
     if @response.save
