@@ -5,7 +5,7 @@ class IncomingMailsController < ApplicationController
     subject = params[:headers][:Subject]
     id = subject.match(/\d+$/)
     # id = [/\d+/] # finds the first number of the subject line
-    # @ticket = Ticket.find(id)
+    @ticket = Ticket.find(id)
 
     # doesn't work b/c of fixed parameters?
     # @response = @ticket.responses.build( body: params[:plain] )  
