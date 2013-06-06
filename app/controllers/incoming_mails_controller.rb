@@ -1,7 +1,24 @@
 class IncomingMailsController < ApplicationController
-  skip_before_filter :verify_authenticity_token
-
   def create
+    Rails.logger.info params
+    message = Message.new(
+      :to => params[:envelope][:to],
+      :from => params[:envelope][:from],
+      :subject => params[:headers]['Subject'],
+      :body => params[:plain]
+    )
+    if message.save
+      render :text => 'Success', :status => 200
+    else
+      render :text => message.errors.full_messages, :status => 422, :content_type => Mime::TEXT.to_s
+    end
+  end
+
+
+
+  # skip_before_filter :verify_authenticity_token
+
+  # def create
 
     # Rails.logger.log params[:envelope][:to] # print the to field to the logs
     #     Rails.logger.log params[:subject] # print the subject to the logs
@@ -18,7 +35,7 @@ class IncomingMailsController < ApplicationController
     # ticket.responses.build
     
     # ticket.responses.create( body: params[:plain])
-    render :text => 'success', :status => 200 # a status of 404 would reject the mail
-  end
+  #   render :text => 'success', :status => 200 # a status of 404 would reject the mail
+  # end
 
 end
