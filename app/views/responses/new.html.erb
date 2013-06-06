@@ -1,0 +1,9 @@
+<h2>New Response</h2>
+<%= form_for [@ticket, @response] do |f| %>
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_field :body %>
+  </p>
+
+  <%= f.submit %>
+<% end %>

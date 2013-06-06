@@ -1,4 +1,4 @@
 class Ticket < ActiveRecord::Base
-  has_many :response, autosave: true, :dependent => :delete
-  accepts_nested_attributes_for :response
+  has_many :responses, autosave: true, :dependent => :delete_all
+  accepts_nested_attributes_for :responses
 end
