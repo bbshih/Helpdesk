@@ -10,10 +10,12 @@
   <%= @ticket.body %>
 </p>
 
+<p>
+  Created on <%= @ticket.created_at.to_s(:pretty) %>
+</p>
 <ul>
   <% @ticket.responses.each do |response| %>
-    <li><%= response.body %></li>
-  <% end %>
+    <li><%= response.body %> - <%= response.created_at.to_s(:pretty) %></li> <% end %>
 </ul>
 <%= link_to 'Create response', new_ticket_response_path(@ticket) %>
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |

@@ -1,4 +1,5 @@
 Helpdesk::Application.routes.draw do
+  devise_for :users
   resources :tickets do
     resources :responses
   end

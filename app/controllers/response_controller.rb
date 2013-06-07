@@ -1,4 +1,5 @@
 class ResponseController < ApplicationController
+  before_filter :authenticate_user!
   before_filter :find_ticket
   before_filter :find_response, only: [:show, :edit, :update, :destroy]
   
