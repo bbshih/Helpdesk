@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   def define_resource_params
     if ((self.class <= Devise::PasswordsController) || (self.class <= Devise::RegistrationsController))
       self.class.send(:define_method, :resource_params) do
-        params.require(resource_name).permit(:email, :password, :password_confirmation, :time_zone)
+        params.require(resource_name).permit(:email, :password, :password_confirmation)
       end
     end
   end
